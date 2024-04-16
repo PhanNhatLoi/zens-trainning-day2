@@ -22,7 +22,9 @@ export class TodoController {
 
   @Get(':id')
   getDetail(@Param() { id }: { id: string }) {
-    return this.todoWorksService.detail(id) || 'not found';
+    return this.todoWorksService.detail(id)?.status === 'DELETE'
+      ? 'todo work is deleted'
+      : this.todoWorksService.detail(id) || 'not found';
   }
 
   @Post()

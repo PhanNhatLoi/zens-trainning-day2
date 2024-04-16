@@ -26,7 +26,7 @@ export class TodoService {
   }
 
   detail(_id: string): Todo {
-    return this.todoWorks.find((f) => f._id === _id && f.status !== 'DELETE');
+    return this.todoWorks.find((f) => f._id === _id);
   }
 
   update(body: Todo) {
