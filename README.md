@@ -26,6 +26,38 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+Day 2: NestJS Basic knowledge(Cài đặt môi trường và basic cấu trúc)
+
+```bash
+- Cài đặt môi trường.
+- Config todo module, service, controllers
+- Xây dựng các phương thức cơ bản:
+
+  + Create todo work: Post: /todo (require:(body: { name: string, description: string });)
+
+  + Get all todo works: GET: /todo
+    response: [
+    {
+      "_id": string,
+      "name": string,
+      "description": string,
+      "status":'NEW' | 'IN_PROGRESS' | 'DONE' | 'DELETE';
+      }
+    ]
+
+  + Get detail todo work: GET: /todo/{id}
+    response:
+      {"_id": string,
+      "name": string,
+      "description": string,
+      "status":'NEW' | 'IN_PROGRESS' | 'DONE' | 'DELETE';
+    }
+  + Update: PUT : /todo/{id} (require:(body: { name: string, description: string }))
+  + Delete: DELETE : /todo/{id}
+
+- Xây dựng middleware đơn giản kiểm tra authorization từ headers (chưa xử lý nâng cao)
+```
+
 ## Installation
 
 ```bash
