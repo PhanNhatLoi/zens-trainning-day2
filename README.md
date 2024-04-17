@@ -58,6 +58,15 @@ Day 2: NestJS Basic knowledge(Cài đặt môi trường và basic cấu trúc)
 - Xây dựng middleware đơn giản kiểm tra authorization từ headers (chưa xử lý nâng cao)
 ```
 
+```bash
+Day2: Tìm hiểu và sử dụng unit testtrong NestJS
+  - Tìm hiểu khái niệm Testing
+  - Cài đặt : Đối với dự án khởi chạy bằng NestJS thì đã có cài đặt sẵn, tuy nhiên nếu chưa cài đặt có thể cài đặt
+  bằng lệnh  npm i --save-dev @nestjs/testing hoặc yarn @nestjs/testing --dev
+  - Viết unit test cho các function: create work, getList, getDetail, update info, update status, delete.
+
+```
+
 ## Installation
 
 ```bash
