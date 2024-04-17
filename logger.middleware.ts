@@ -8,7 +8,7 @@ import { Request, Response, NextFunction } from 'express';
 @Injectable()
 export class LoggerMiddleware implements NestMiddleware {
   use(req: Request, res: Response, next: NextFunction) {
-    if (!req.headers.authorization) {
+    if (req.headers.authorization) {
       // todo check Authorization after
       next();
     } else {
