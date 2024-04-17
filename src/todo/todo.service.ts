@@ -62,6 +62,25 @@ export class TodoService {
       message: 'Update work success',
     };
   }
+  changeStatus(_id, status) {
+    const statusValidate = ['NEW', 'IN_PROGRESS', 'DONE'];
+    if (!_id) {
+      throw new BadRequestException('id is required!');
+    }
+    const index = this.todoWorks.findIndex(
+      (f) => f._id === _id && f.status !== 'DELETE',
+    );
+    if (index < 0) {
+      throw new NotFoundException('work not round');
+    }
+    if (!statusValidate.includes(status)) {
+      throw new BadRequestException('status is invalid!');
+    }
+    this.todoWorks[index].status = status;
+    return {
+      message: 'Update state work success',
+    };
+  }
 
   delete(_id: string) {
     if (!_id) {

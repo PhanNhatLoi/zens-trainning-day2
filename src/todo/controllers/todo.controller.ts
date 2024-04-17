@@ -9,7 +9,7 @@ import {
 } from '@nestjs/common';
 import { Todo } from './interfaces/todo.interface';
 import { TodoService } from '../todo.service';
-import { CreateTodoDto } from './dto/create-todo.dto';
+import { CreateTodoDto, StatusType } from './dto/create-todo.dto';
 
 @Controller('todo')
 export class TodoController {
@@ -37,5 +37,9 @@ export class TodoController {
   @Delete(':id')
   delete(@Param() { id }: { id: string }) {
     return this.todoWorksService.delete(id);
+  }
+  @Put(':id/:status')
+  changeStatus(@Param() { id, status }: { id: string; status: StatusType }) {
+    return this.todoWorksService.changeStatus(id, status.toUpperCase());
   }
 }

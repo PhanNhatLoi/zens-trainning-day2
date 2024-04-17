@@ -2,5 +2,7 @@ export class CreateTodoDto {
   _id?: string;
   name: string;
   description: string;
-  status?: 'NEW' | 'IN_PROGRESS' | 'DONE' | 'DELETE';
+  status?: StatusType;
 }
+
+export type StatusType = 'NEW' | 'IN_PROGRESS' | 'DONE' | 'DELETE';

@@ -212,5 +212,44 @@ describe('TodoController', () => {
       ).toThrow(NotFoundException);
     });
     //_____test update work_____//
+    //_____test update status_____//
+    it('update status success', async () => {
+      const newTodo = {
+        name: 'first work',
+        description: 'description',
+      };
+      const res = await controller.create(newTodo);
+      expect(
+        controller.changeStatus({ id: res.work._id, status: 'IN_PROGRESS' }),
+      ).toEqual({
+        message: 'Update state work success',
+      });
+    });
+
+    it('update status success', async () => {
+      const newTodo = {
+        name: 'first work',
+        description: 'description',
+      };
+      const res = await controller.create(newTodo);
+      expect(
+        controller.changeStatus({ id: res.work._id, status: 'IN_PROGRESS' }),
+      ).toEqual({
+        message: 'Update state work success',
+      });
+    });
+
+    it('update status with status wrong', async () => {
+      const newTodo = {
+        name: 'first work',
+        description: 'description',
+      };
+      const res = await controller.create(newTodo);
+
+      expect(() =>
+        controller.changeStatus({ id: res.work._id, status: 'DELETE' }),
+      ).toThrow(BadRequestException);
+    });
+    //_____test update status_____//
   });
 });
