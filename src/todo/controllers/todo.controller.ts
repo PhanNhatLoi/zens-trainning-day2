@@ -15,6 +15,11 @@ import { CreateTodoDto, StatusType } from './dto/create-todo.dto';
 export class TodoController {
   constructor(private todoWorksService: TodoService) {}
 
+  @Post()
+  async create(@Body() createTodoDto: CreateTodoDto) {
+    return this.todoWorksService.create(createTodoDto);
+  }
+
   @Get()
   async getList(): Promise<Todo[]> {
     return this.todoWorksService.findAll();
@@ -25,21 +30,18 @@ export class TodoController {
     return this.todoWorksService.detail(id);
   }
 
-  @Post()
-  async create(@Body() createTodoDto: CreateTodoDto) {
-    return this.todoWorksService.create(createTodoDto);
-  }
-
   @Put(':id')
   update(@Param() { id }: { id: string }, @Body() body: CreateTodoDto) {
     return this.todoWorksService.update({ ...body, _id: id });
   }
-  @Delete(':id')
-  delete(@Param() { id }: { id: string }) {
-    return this.todoWorksService.delete(id);
-  }
+
   @Put(':id/:status')
   changeStatus(@Param() { id, status }: { id: string; status: StatusType }) {
     return this.todoWorksService.changeStatus(id, status.toUpperCase());
+  }
+
+  @Delete(':id')
+  delete(@Param() { id }: { id: string }) {
+    return this.todoWorksService.delete(id);
   }
 }

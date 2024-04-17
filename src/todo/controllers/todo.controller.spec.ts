@@ -42,7 +42,7 @@ describe('TodoController', () => {
 
     it('add work name is ""', async () => {
       const result = {
-        name: ' ',
+        name: '',
         description: 'description',
       };
       expect(() => controller.create(result)).rejects.toThrow(
@@ -149,12 +149,6 @@ describe('TodoController', () => {
       expect(controller.delete({ id: res.work._id })).toEqual({
         message: 'delete work success',
       });
-    });
-
-    it('should delete work error with wrong id', async () => {
-      expect(() => controller.delete({ id: 'wrong id' })).toThrow(
-        NotFoundException,
-      );
     });
 
     it('should delete work error with wrong id', async () => {
